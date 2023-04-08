@@ -36,6 +36,12 @@ const setupAndStartServer = () =>{
     app.use('/flightSearch', createProxyMiddleware({target:'http://localhost:3000/',changeOrigin:true}));
     app.use('/authService', createProxyMiddleware({target:'http://localhost:3001/',changeOrigin:true}));
 
+    app.get('/home',(req,res)=>{
+        return res.json({
+            "message":"OK"
+        })
+    })
+
     app.listen(PORT,()=>{
         console.log(`Listening on ${PORT}`);
     });
